@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import voiceGif from "./assets/voice.gif";
 import { Link } from "react-router-dom";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 import {
   FaTwitter,
   FaGithub,
@@ -105,7 +105,7 @@ const App = () => {
     setInputText(text);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/chat", {
+      const res = await fetch({apiUrl}, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
