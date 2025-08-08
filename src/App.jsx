@@ -116,7 +116,16 @@ const App = () => {
       }
 
       const data = await res.json();
-      const responseText = data.response || "Sorry, I did not understand.";
+      const responseText =
+        typeof data.response === "string"
+          ? data.response
+          : data.response?.message || "Sorry, I did not understand.";
+
+      console.log("Response from backend:", responseText);
+
+      if (data.action === "open_url" && data.url) {
+        window.open(data.url, "_blank");
+      }
 
       // Add AI's message to history
       setHistory((prev) => [...prev, { sender: "ai", text: responseText }]);
