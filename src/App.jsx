@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import voiceGif from "./assets/voice.gif";
 import { Link } from "react-router-dom";
-const apiUrl = import.meta.env.VITE_API_URI;
+
 import {
   FaTwitter,
   FaGithub,
@@ -105,7 +105,7 @@ const App = () => {
     setInputText(text);
 
     try {
-      const res = await fetch(`${apiUrl}/chat`, {
+      const res = await fetch("https://eva-backend-z9d8.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
@@ -126,7 +126,6 @@ const App = () => {
       console.error("Backend error:", err);
       const errorMsg = "There was a connection error.";
       speak(errorMsg);
-
       // Add error message to history
       setHistory((prev) => [...prev, { sender: "ai", text: errorMsg }]);
     } finally {
