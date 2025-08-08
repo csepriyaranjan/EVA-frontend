@@ -105,7 +105,7 @@ const App = () => {
     setInputText(text);
 
     try {
-      const res = await fetch({apiUrl}, {
+      const res = await fetch(`${apiUrl}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
