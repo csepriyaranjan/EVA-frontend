@@ -121,8 +121,9 @@ const App = () => {
           ? data.response
           : data.response?.message || "Sorry, I did not understand.";
 
-      console.log("Response from backend:", responseText);
-      
+
+        console.log("Response from backend:", responseText);
+
       if (data.response?.action === "open_url" && data.response?.url) {
         window.open(data.response.url, "_blank");
         console.log("Opening URL:", data.response.url);
