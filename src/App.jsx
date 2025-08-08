@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import voiceGif from "./assets/voice.gif";
 import { Link } from "react-router-dom";
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URI;
 import {
   FaTwitter,
   FaGithub,
