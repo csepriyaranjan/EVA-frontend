@@ -122,11 +122,11 @@ const App = () => {
           : data.response?.message || "Sorry, I did not understand.";
 
       console.log("Response from backend:", responseText);
-
-      if (data.action === "open_url" && data.url) {
-        window.open(data.url, "_blank");
+      
+      if (data.response?.action === "open_url" && data.response?.url) {
+        window.open(data.response.url, "_blank");
+        console.log("Opening URL:", data.response.url);
       }
-
       // Add AI's message to history
       setHistory((prev) => [...prev, { sender: "ai", text: responseText }]);
 
